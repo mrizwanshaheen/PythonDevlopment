@@ -149,7 +149,7 @@ nav .container {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding-top: var(--nav-height);
+    padding-top: calc(var(--nav-height) + 40px);
     background: radial-gradient(circle at 80% 20%, var(--surface-light), transparent 60%);
 }
 
