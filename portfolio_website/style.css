@@ -683,103 +683,162 @@ footer {
 
 /* Testimonials Section */
 #testimonials {
-    padding: 100px 0;
-    overflow-x: hidden;
+    padding: 120px 0;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
+}
+
+.testimonial-bg-glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 0;
 }
 
 .testimonials-wrapper {
     position: relative;
-    margin-top: 2rem;
+    margin-top: 3rem;
+    z-index: 1;
 }
 
 .testimonials-scroll {
     display: flex;
-    gap: 2rem;
+    gap: 2.5rem;
     overflow-x: auto;
-    padding: 20px 2rem 40px;
+    padding: 40px 2rem 60px;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    /* Firefox */
 }
 
 .testimonials-scroll::-webkit-scrollbar {
     display: none;
-    /* Chrome, Safari, Opera */
 }
 
 .testimonial-card {
-    flex: 0 0 340px;
-    background: var(--surface);
-    padding: 2.5rem;
-    border-radius: 16px;
-    border: 1px solid var(--border);
+    flex: 0 0 380px;
+    background: rgba(17, 24, 39, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: 3rem;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: var(--transition);
-    user-select: none;
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.5);
+}
+
+.testimonial-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, transparent 40%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
 
 .testimonial-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.4);
-    border-color: var(--accent-hover);
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(59, 130, 246, 0.3);
+    box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.7);
+}
+
+.testimonial-card:hover::before {
+    opacity: 1;
+}
+
+.card-quote-icon {
+    position: absolute;
+    top: 2rem;
+    right: 2.5rem;
+    font-size: 3rem;
+    color: rgba(59, 130, 246, 0.1);
+    transition: var(--transition);
+}
+
+.testimonial-card:hover .card-quote-icon {
+    color: rgba(59, 130, 246, 0.2);
+    transform: translateY(-5px);
 }
 
 .testimonial-content {
-    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 2.5rem;
 }
 
 .review-text {
-    font-size: 0.95rem;
-    line-height: 1.7;
-    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+    font-weight: 400;
     display: -webkit-box;
     -webkit-line-clamp: 5;
     line-clamp: 5;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
+    opacity: 0.9;
 }
 
 .read-more {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: var(--accent);
     cursor: pointer;
-    font-weight: 500;
+    font-weight: 600;
     display: none;
-    /* Shown via JS if overflow */
+    transition: var(--transition);
+    border-bottom: 1px solid transparent;
 }
 
 .read-more:hover {
-    text-decoration: underline;
+    border-color: var(--accent);
+    letter-spacing: 0.5px;
 }
 
 .client-identity {
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--border);
+    position: relative;
+    z-index: 1;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .client-name {
     display: block;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--text-primary);
-    font-size: 1rem;
-    margin-bottom: 0.25rem;
+    font-size: 1.15rem;
+    margin-bottom: 0.35rem;
+    letter-spacing: -0.01em;
 }
 
 .client-role {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: var(--text-muted);
+    font-weight: 500;
 }
 
 .legal-safety {
     text-align: center;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     color: var(--text-muted);
-    margin-top: 3rem;
-    font-style: italic;
+    margin-top: 4rem;
+    font-style: normal;
+    font-weight: 400;
+    opacity: 0.6;
 }
 
 /* Modal */
