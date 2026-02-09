@@ -120,10 +120,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // ESC key support
-    window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.style.display === 'flex') {
-            closeReviewModal();
-        }
+    // 7. Mobile Menu Interaction
+    const navToggle = document.getElementById('nav-toggle');
+    const navLinksContainer = document.getElementById('nav-links');
+    const navOverlay = document.getElementById('nav-overlay');
+    const mobileLinks = document.querySelectorAll('.nav-links a');
+
+    const toggleMenu = () => {
+        navToggle.classList.toggle('active');
+        navLinksContainer.classList.toggle('active');
+        navOverlay.classList.toggle('active');
+        document.body.style.overflow = navLinksContainer.classList.contains('active') ? 'hidden' : '';
+    };
+
+    if (navToggle) {
+        navToggle.addEventListener('click', toggleMenu);
+    }
+
+    if (navOverlay) {
+        navOverlay.addEventListener('click', toggleMenu);
+    }
+
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (navLinksContainer.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
     });
 });

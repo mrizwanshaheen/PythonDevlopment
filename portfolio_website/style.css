@@ -603,82 +603,185 @@ footer {
 
 /* Responsive */
 @media (max-width: 1024px) {
+    .container {
+        padding: 0 1.5rem;
+    }
 
     .hero-grid,
     .about-grid {
         grid-template-columns: 1fr;
-        gap: 4rem;
+        gap: 3rem;
         text-align: center;
+    }
+
+    .hero-content p {
+        margin: 0 auto 3rem;
     }
 
     .hero-image-wrapper {
         margin: 0 auto;
+        max-width: 320px;
     }
 
     .skills-grid,
     .projects-grid {
         grid-template-columns: 1fr;
+        gap: 2.5rem;
     }
 
     .timeline::after {
-        left: 5%;
+        left: 20px;
     }
 
     .timeline-block {
         width: 100%;
-        padding-left: 10%;
+        padding-left: 50px;
         padding-right: 0;
+        margin-bottom: 2rem;
         text-align: left;
     }
 
     .timeline-block::after {
-        left: calc(5% - 4px);
+        left: 16px;
     }
 
     .block-left {
+        left: 0;
         text-align: left;
+    }
+
+    .block-right {
+        left: 0;
+        padding-left: 50px;
     }
 }
 
 @media (max-width: 768px) {
     section {
-        padding: 80px 0;
+        padding: 60px 0;
+    }
+
+    h2 {
+        margin-bottom: 2.5rem;
+    }
+
+    /* Mobile Menu Implementation */
+    .nav-toggle {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    .nav-toggle span {
+        display: block;
+        width: 25px;
+        height: 2px;
+        background-color: var(--text-primary);
+        transition: var(--transition);
+        transform-origin: center;
+    }
+
+    .nav-toggle.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .nav-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-toggle.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background: var(--surface);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links a {
+        font-size: 1.25rem;
+    }
+
+    .nav-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(4px);
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+        z-index: 999;
+    }
+
+    .nav-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .hero {
+        padding-top: 100px;
+    }
+
+    .btn-group {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .btn {
+        width: 100%;
     }
 
     .contact-card {
-        padding: 2rem;
+        padding: 2.5rem 1.5rem;
+    }
+
+    .footer-socials {
+        gap: 1.5rem;
+        flex-wrap: wrap;
     }
 }
 
-/* WhatsApp Floating Button */
-.whatsapp-float {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 60px;
-    height: 60px;
-    background-color: #25D366;
-    color: #FFF;
-    border-radius: 50%;
-    text-align: center;
-    font-size: 30px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    z-index: 1001;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    transition: var(--transition);
-}
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2.5rem;
+    }
 
-.whatsapp-float:hover {
-    background-color: #128C7E;
-    transform: scale(1.1) translateY(-5px);
-    color: #FFF;
-}
+    h2 {
+        font-size: 1.75rem;
+    }
 
-.whatsapp-float i {
-    cursor: pointer;
+    .testimonial-card {
+        flex: 0 0 280px;
+        padding: 2rem;
+    }
+
+    .whatsapp-float {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
 }
 
 /* Testimonials Section */
