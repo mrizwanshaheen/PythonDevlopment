@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body class="atm-body">
+    <div class="atm-screen">
+        <div class="screen-content">
+            <h1>Rizwan Banking System</h1>
+            <p>Please enter your PIN</p>
+            <div class="pin-display" id="pin-display">----</div>
+            <div class="keypad">
+                <button onclick="appendPin('1')">1</button>
+                <button onclick="appendPin('2')">2</button>
+                <button onclick="appendPin('3')">3</button>
+                <button onclick="appendPin('4')">4</button>
+                <button onclick="appendPin('5')">5</button>
+                <button onclick="appendPin('6')">6</button>
+                <button onclick="appendPin('7')">7</button>
+                <button onclick="appendPin('8')">8</button>
+                <button onclick="appendPin('9')">9</button>
+                <button class="clear" onclick="clearPin()">CLR</button>
+                <button onclick="appendPin('0')">0</button>
+                <button class="enter" onclick="submitPin()">ENT</button>
+            </div>
+            <p id="message" class="error-message"></p>
+            <button class="action-btn secondary" onclick="resetPin()"
+                style="margin-top: 20px; font-size: 0.9rem; padding: 10px 20px;">Reset PIN</button>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>

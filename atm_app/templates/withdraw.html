@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM Withdrawal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body class="atm-body">
+    <div class="atm-screen">
+        <div class="screen-content">
+            <h1>Rizwan Banking System</h1>
+            <h2>Withdraw Cash</h2>
+            <p>Current Balance: $<span id="balance">{{ balance }}</span></p>
+
+            <div class="withdraw-options">
+                <button onclick="setAmount(20)">$20</button>
+                <button onclick="setAmount(50)">$50</button>
+                <button onclick="setAmount(100)">$100</button>
+                <button onclick="setAmount(200)">$200</button>
+            </div>
+
+            <input type="number" id="custom-amount" placeholder="Enter Amount" min="10">
+
+            <button class="action-btn" onclick="submitWithdraw()">Withdraw</button>
+            <button class="action-btn secondary" onclick="logout()">Exit</button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <h2>Success!</h2>
+            <p>Amount Successfully Withdrawn.</p>
+            <p>Please take your cash.</p>
+            <hr>
+            <p>Do you want to make another transaction?</p>
+            <div class="modal-actions">
+                <button onclick="closeModal()">Yes</button>
+                <button onclick="logout()">No</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
