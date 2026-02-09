@@ -21,6 +21,7 @@
     --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --container-width: 1000px;
+    --container-wide: 1200px;
     --nav-height: 70px;
 }
 
@@ -50,6 +51,10 @@ body {
     max-width: var(--container-width);
     margin: 0 auto;
     padding: 0 2rem;
+}
+
+.container-wide {
+    max-width: var(--container-wide);
 }
 
 section {
@@ -674,4 +679,196 @@ footer {
 
 .whatsapp-float i {
     cursor: pointer;
+}
+
+/* Testimonials Section */
+#testimonials {
+    padding: 100px 0;
+    overflow-x: hidden;
+}
+
+.testimonials-wrapper {
+    position: relative;
+    margin-top: 2rem;
+}
+
+.testimonials-scroll {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    padding: 20px 2rem 40px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.testimonials-scroll::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, Opera */
+}
+
+.testimonial-card {
+    flex: 0 0 340px;
+    background: var(--surface);
+    padding: 2.5rem;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: var(--transition);
+    user-select: none;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.4);
+    border-color: var(--accent-hover);
+}
+
+.testimonial-content {
+    margin-bottom: 2rem;
+}
+
+.review-text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+}
+
+.read-more {
+    font-size: 0.85rem;
+    color: var(--accent);
+    cursor: pointer;
+    font-weight: 500;
+    display: none;
+    /* Shown via JS if overflow */
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}
+
+.client-identity {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+}
+
+.client-name {
+    display: block;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.client-role {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.legal-safety {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 3rem;
+    font-style: italic;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: var(--surface);
+    padding: 3rem;
+    border-radius: 16px;
+    max-width: 600px;
+    width: 90%;
+    position: relative;
+    border: 1px solid var(--border);
+    animation: modalIn 0.3s ease-out;
+}
+
+@keyframes modalIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.close-modal {
+    position: absolute;
+    right: 2rem;
+    top: 1.5rem;
+    font-size: 2rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    line-height: 1;
+}
+
+.close-modal:hover {
+    color: var(--text-primary);
+}
+
+#modal-text {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.modal-identity {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+}
+
+#modal-client-name {
+    display: block;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+}
+
+#modal-client-role {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .testimonial-card {
+        flex: 0 0 300px;
+        padding: 2rem;
+    }
+
+    .modal-content {
+        padding: 2rem;
+    }
 }

@@ -73,4 +73,57 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // 6. Professional Testimonials Logic
+    const testimonialCards = document.querySelectorAll('.testimonial-card');
+    const modal = document.getElementById('review-modal');
+    const modalText = document.getElementById('modal-text');
+    const modalName = document.getElementById('modal-client-name');
+    const modalRole = document.getElementById('modal-client-role');
+    const closeModal = document.querySelector('.close-modal');
+
+    // Detect text overflow for "Read more" link
+    testimonialCards.forEach(card => {
+        const textElement = card.querySelector('.review-text');
+        const readMoreBtn = card.querySelector('.read-more');
+
+        // Check if text is truncated (clamped)
+        if (textElement.scrollHeight > textElement.clientHeight) {
+            readMoreBtn.style.display = 'inline-block';
+        }
+
+        readMoreBtn.addEventListener('click', () => {
+            const fullText = readMoreBtn.getAttribute('data-full-text');
+            const name = card.querySelector('.client-name').textContent;
+            const role = card.querySelector('.client-role').textContent;
+
+            modalText.textContent = fullText;
+            modalName.textContent = name;
+            modalRole.textContent = role;
+
+            modal.style.display = 'flex';
+            document.body.classList.add('modal-open');
+        });
+    });
+
+    // Modal Closing Logic
+    const closeReviewModal = () => {
+        modal.style.display = 'none';
+        document.body.classList.remove('modal-open');
+    };
+
+    closeModal.addEventListener('click', closeReviewModal);
+
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeReviewModal();
+        }
+    });
+
+    // ESC key support
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.style.display === 'flex') {
+            closeReviewModal();
+        }
+    });
 });
