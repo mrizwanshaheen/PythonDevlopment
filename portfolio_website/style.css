@@ -162,14 +162,20 @@ nav .container {
     position: relative;
     border: none;
     animation: float 6s ease-in-out infinite;
-    -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 95%);
-    mask-image: radial-gradient(circle at center, black 40%, transparent 95%);
+    /* Soft, curvy elliptical mask for natural shoulder blending */
+    -webkit-mask-image: radial-gradient(ellipse at 50% 45%, black 25%, transparent 95%);
+    mask-image: radial-gradient(ellipse at 50% 45%, black 25%, transparent 95%);
 }
 
 .hero-image-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    /* High-fidelity "shiny" filters */
+    filter: brightness(1.1) contrast(1.1) saturate(1.15) drop-shadow(0 0 1px rgba(255, 255, 255, 0.1));
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    image-rendering: -webkit-optimize-contrast;
+    /* Sharpening for some browsers */
 }
 
 @keyframes float {
@@ -431,23 +437,35 @@ nav .container {
 
 .project-image {
     width: 100%;
-    height: 220px;
-    background: #1e293b;
+    height: 240px;
+    background: var(--bg-main);
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: relative;
 }
 
-.project-image i {
-    font-size: 4rem;
-    color: var(--accent);
-    opacity: 0.3;
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0.85;
 }
 
-.project-card:hover .project-image i {
+.project-card:hover .project-image img {
     transform: scale(1.1);
-    opacity: 0.6;
+    opacity: 1;
+}
+
+/* Subtle gradient overlay on project images */
+.project-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, var(--surface) 0%, transparent 40%);
+    pointer-events: none;
 }
 
 .project-info {
