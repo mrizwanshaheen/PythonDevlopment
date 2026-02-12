@@ -148,4 +148,19 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+    // 8. Testimonial Video Logic
+    const video = document.getElementById("testimonial-video");
+    const overlay = document.getElementById("video-overlay");
+    const playButton = document.getElementById("play-button");
+
+    if (playButton) {
+        playButton.addEventListener("click", () => {
+            if (video.paused) {
+                video.play();
+                video.controls = true;
+                overlay.style.display = "none";
+            }
+        });
+    }
+
 });
